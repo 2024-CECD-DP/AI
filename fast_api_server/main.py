@@ -1,6 +1,7 @@
+import schedule
+
 from fastapi import FastAPI
 from utils import get_db_connection
-import schedule
 
 app = FastAPI()
 
