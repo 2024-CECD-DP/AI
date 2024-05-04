@@ -1,7 +1,17 @@
 from fastapi import FastAPI
+from utils import get_db_connection
 import schedule
 
 app = FastAPI()
+
+
+def get_user_list():
+    conn, cur = get_db_connection()
+    cur.execute("SELECT * FROM user_entity")
+    user_list = [row[1] for row in cur.fetchall()]
+    cur.close()
+    conn.close()
+    return user_list
 
 
 def update():
