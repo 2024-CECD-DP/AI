@@ -6,10 +6,11 @@ from utils import get_db_connection
 app = FastAPI()
 
 
+@app.get("/users")
 def get_user_list():
     conn, cur = get_db_connection()
-    cur.execute("SELECT * FROM user_entity")
-    user_list = [row[1] for row in cur.fetchall()]
+    cur.execute("SELECT * FROM influencer")
+    user_list = [row[2] for row in cur.fetchall()]
     cur.close()
     conn.close()
     return user_list
